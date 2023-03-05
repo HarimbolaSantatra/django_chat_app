@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'main_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main_app',
     'channels'
 ]
 
@@ -121,4 +122,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
+# Daphne root routing configuration
+ASGI_APPLICATION = "chat_app.asgi.application"
