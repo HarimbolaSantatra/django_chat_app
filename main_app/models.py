@@ -1,16 +1,14 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # main_app models
 
 
-class DiscussionGroup(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField
+class Room(models.Model):
+    name = models.CharField(max_length=20, null=True)
+    description = models.CharField(max_length=100, null=True)
 
 
-class ChatUser(models.Model):
-    id = models.IntegerField(primary_key=True)
-    username = models.CharField
-    password = models.CharField
-    email = models.EmailField
-    discussion_group = models.ManyToManyField(DiscussionGroup)
+class Chat(models.Model):
+    message = models.CharField(max_length=100, default="")
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    room = models.ForeignKey(Room, on_delete=models.PROTECT)

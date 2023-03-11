@@ -3,6 +3,7 @@ import json
 
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
+from main_app.models import Room, Chat
 
 
 class ChatConsumer(WebsocketConsumer):
@@ -32,6 +33,10 @@ class ChatConsumer(WebsocketConsumer):
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name, {"type": "chat_message", "message": message}
         )
+
+        # Save message to database
+        
+
 
     # Receive message from room group
     def chat_message(self, event):

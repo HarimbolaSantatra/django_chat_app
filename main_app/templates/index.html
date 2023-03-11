@@ -4,17 +4,23 @@
 {% block title %} Room Choice {% endblock %}
 
 {% block content %}
-    <p> Username : {{username}}</p>
-    <p>
+    <div class="mb-2">
+        Username : {{username}}
         <a href="{% url 'logout' %}" class="btn btn-outline-danger">
             Logout
         </a>
-    </p>
-    <p>
-        What chat room would you like to enter?<br>
-        <input id="room-name-input" type="text" size="100"><br>
-        <input id="room-name-submit" class="btn btn-primary" type="button" value="Enter">
-    </p>
+    </div>
+    <div class="row mb-2">
+        <label for="room-name-input" class="col-4 col-form-label">
+            What chat room would you like to enter?
+        </label>
+        <select id="room-name-input" class="col-1 form-select" >
+            {% for room in rooms %}
+                <option value={{room.name}} > {{ room.name }} </option>
+            {% endfor %}
+        </select>
+    </div>
+    <input id="room-name-submit" class="btn btn-primary" type="button" value="Enter">
 
     <script>
         document.querySelector('#room-name-input').focus();
