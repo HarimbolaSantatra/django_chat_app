@@ -19,17 +19,16 @@
         {% block content %}
         {% endblock content %}
     </div>
+
+    {% block script %}
+        <script src="{% static 'jquery.js' %}"></script>
+        <script src="{% static 'popper.js' %}"></script>
+        <script src="{% static 'bootstrap.min.js' %}"></script>
+        <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.dropdown-toggle').dropdown()
+            });
+        </script>
+    {% endblock script %}
 </body>
-
-
-{% block script %}
-<script src="{% static 'jquery.js' %}"></script>
-<script src="{% static 'popper.js' %}"></script>
-<script src="{% static 'bootstrap.min.js' %}"></script>
-<script src="{% static 'bootstrap.bundle.min.js' %}"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('.dropdown-toggle').dropdown()
-    });
-</script>
-{% endblock script %}
