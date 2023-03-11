@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required   # For login required decorator
-from main_app.models import Room
+from main_app.models import Room, Chat
 
 
 @login_required(login_url='login')
@@ -15,8 +15,14 @@ def index(request):
 
 @login_required(login_url='login')
 def room(request, room_name):
+    current_room = Room.objects.get(name=room_name)
+    chats = Chat.objects.filter(room=current_room)
+    chat_message = ""
+    for chat in chats:
+        chat_message += chat.user.username + " : " + chat.message + "\n"
     context = {
         'username': request.session['username'],
-        "room_name": room_name
+        'room_name': room_name,
+        'chat_message': chat_message
     }
     return render(request, "room.html", context)
