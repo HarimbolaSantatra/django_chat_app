@@ -135,3 +135,7 @@ CHANNEL_LAYERS = {
 }
 
 AUTHENTICATION_BACKEND = ['chat_app.login.User']
+
+
+# Cookie based session
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
