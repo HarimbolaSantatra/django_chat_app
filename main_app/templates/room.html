@@ -2,27 +2,58 @@
 {{room_name}} {% endblock %} {% block content %}
 
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2> {{room_name}} </h2>
-    <div>
-        <span class="mx-2"> Username : {{username}} </span>
-        <a href="{% url 'logout' %}" class="btn btn-outline-danger"> Logout </a>
+  <h2>{{room_name}}</h2>
+  <div>
+    <span class="mx-2"> Username : {{username}} </span>
+    <a href="{% url 'logout' %}" class="btn btn-outline-danger"> Logout </a>
+  </div>
+</div>
+
+<div id="message-block">
+  <div class="message-date">4 May</div>
+
+  <div class="message-row">
+    <div class="message-time">02:01 AM</div>
+    <div class="message-card">
+      <div class="message-name">Santatra</div>
+      <div class="message-box-container">
+        <div class="message-box owner">Hello, World!</div>
+      </div>
     </div>
+  </div>
+
+  <div class="message-row">
+    <div class="message-time">02:44 AM</div>
+    <div class="message-card">
+      <div class="message-name">Kezia</div>
+      <div class="message-box-container">
+        <div class="message-box">
+          Hello, Again! asdasd asdasdas adasdasdasd asda dasd But this is the
+          end because I'm done. i'm going to sleep
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <textarea id="chat-log" cols="100" rows="10" readonly class="mb-2">
     {{chat_message}}
 </textarea>
 
-<input id="chat-message-user" type="hidden" value="{{username}}" />
-<input id="chat-message-room" type="hidden" value="{{room_name}}" />
-<input id="chat-message-input" type="text" size="100" class="mb-2" /><br />
-<input
-  id="chat-message-submit"
-  type="button"
-  class="btn btn-primary"
-  value="Send"
-/>
-<a href="{% url 'index' %}" class="btn btn-secondary"> Exit Room </a>
+<div id="input-block">
+  <input id="chat-message-user" type="hidden" value="{{username}}" />
+  <input id="chat-message-room" type="hidden" value="{{room_name}}" />
+  <input id="chat-message-input" type="text" size="100" class="mb-2" />
+  <br />
+  <input
+    id="chat-message-submit"
+    type="button"
+    class="btn btn-primary"
+    value="Send"
+  />
+  <a href="{% url 'index' %}" class="btn btn-secondary"> Exit Room </a>
+</div>
 
 {{ room_name|json_script:"room-name" }}
 
