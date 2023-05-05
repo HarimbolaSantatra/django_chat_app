@@ -12,34 +12,25 @@
 <div id="message-block">
   <div class="message-date">4 May</div>
 
+  {% for message in chat_message %}
   <div class="message-row">
-    <div class="message-time">02:01 AM</div>
+    <div class="message-time">00:44 AM</div>
     <div class="message-card">
-      <div class="message-name">Santatra</div>
+      <div class="message-name"> {{message.username}} </div>
       <div class="message-box-container">
-        <div class="message-box owner">Hello, World!</div>
+        <div class="message-box {{message.class_name}}"> {{message.message}} </div>
       </div>
     </div>
   </div>
-
-  <div class="message-row">
-    <div class="message-time">02:44 AM</div>
-    <div class="message-card">
-      <div class="message-name">Kezia</div>
-      <div class="message-box-container">
-        <div class="message-box">
-          Hello, Again! asdasd asdasdas adasdasdasd asda dasd But this is the
-          end because I'm done. i'm going to sleep
-        </div>
-      </div>
-    </div>
-  </div>
+  {% endfor %}
 
 </div>
 
+{% comment %} 
 <textarea id="chat-log" cols="100" rows="10" readonly class="mb-2">
     {{chat_message}}
 </textarea>
+{% endcomment %}
 
 <div id="input-block">
   <input id="chat-message-user" type="hidden" value="{{username}}" />

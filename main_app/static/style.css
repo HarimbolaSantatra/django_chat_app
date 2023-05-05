@@ -45,13 +45,15 @@
 .message-box-container{
     display: flex;
 }
+
 .message-box{
     border-radius: 10px;
     padding: 7px 12px;
-    background-color: aqua;
     max-width: 100%;
 }
-
-.owner{
+.primary-message-box{
+    background-color: aqua;
+}
+.secondary-message-box{
     background-color: lime;
 }
